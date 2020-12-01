@@ -1,0 +1,10 @@
+<?php
+
+namespace Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Turno extends Model{
+    public $timestamps = false;
+
+}
