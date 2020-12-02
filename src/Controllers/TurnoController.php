@@ -13,9 +13,11 @@ use Models\Mascota;
 use Models\Turno;
 
 class TurnoController{
-    /*public function getAll(Request $request, Response $response, $args){
+    public function getAll(Request $request, Response $response, $args){
         try{
-            $rta = Mesa::get();
+            $rta = Turno::select('turnos.idTipo', 'turnos.fecha', 'mascotas.tipoMascota', 'mascotas.precio')
+            ->join('mascotas','mascotas.id', '=', 'turnos.idTipo' )
+            ->get();
             $response->getBody()->write(GenericResponse::obtain(true, "Listado", $rta));
 
         } catch (\Exception $e) {
@@ -24,7 +26,7 @@ class TurnoController{
         }
 
         return $response;
-    }
+    }/*
     public function getOne(Request $request, Response $response, $args){
         try{
             $rta = Mesa::find($args['id']);

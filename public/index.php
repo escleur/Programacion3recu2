@@ -51,6 +51,7 @@ $app->group('/mascota', function(RouteCollectorProxy $group){
 
 $app->group('/turno', function(RouteCollectorProxy $group){
     $group->post('[/]', TurnoController::class . ":addOne")->add(new AuthMiddleware([UserRole::CLIENTE]));
+    $group->get('[/]', TurnoController::class . ":getAll")->add(new AuthMiddleware([UserRole::ADMIN]));
 })->add(new JsonMiddleware);
 
 
